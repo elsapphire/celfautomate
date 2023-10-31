@@ -59,12 +59,20 @@
 # testimony_list = ['We had a wonderful meeting', 'We had a glorious time', 'We had an awesome time.']
 # print(choice(testimony_list))
 
-# for n in range(3):
-#     if n == 3:
-#         print('N')
+for n in range(4):
+    if n == 3:
+        print('N')
+# #
+# num = input('Number: ')
+# norm = 4
+#
+# algebra = int(num) + norm
+# print(algebra)
 
-num = input('Number: ')
-norm = 4
+# import random
+# print(random.choice([4, 5, 6, 7, 8, 9, 10, 11, 12]))
+# previous_attendance = 31
+# if 30 < previous_attendance <= 54:
+#     print('Yes')
 
-algebra = int(num) + norm
-print(algebra)
+# print(random.choice(list(range(36, 38))))

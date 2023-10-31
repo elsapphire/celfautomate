@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException
 
-pd = pandas.read_csv('Log Ins new.xslx - Sheet1.csv')
+pd = pandas.read_csv('Log Ins new.xlsx - Sheet1.csv')
 emails = pd.to_dict()['email']
 passwords = pd.to_dict()['password']
 
@@ -72,22 +72,24 @@ for i in number_reports[11:20]:
 # print(title_list)
 # print(number_list)
 print('Previous Report:')
-input_attendance = int(input(f'{title_list[3]}: {number_list[3]}. + or - = '))
-input_first_timers = int(input(f'{title_list[4]}: {number_list[4]}. + or - = '))
-input_new_converts = int(input(f'{title_list[5]}: {number_list[5]}. + or - = '))
-input_holy_spirit = int(input(f'{title_list[6]}: {number_list[6]}. + or - = '))
-input_church = int(input(f'{title_list[7]}: {number_list[7]}. + or - = '))
-input_midweek = int(input(f'{title_list[8]}: {number_list[8]}. + or - = '))
+previous_attendance = int(number_list[3])
+previous_first_timers = int(number_list[4])
+previous_new_converts = int(number_list[5])
+previous_holy_spirit = int(number_list[6])
+previous_church = int(number_list[7])
+previous_midweek = int(number_list[8])
 # input_date = input('What is the date of the cell meeting? (DD/MM/YY): ')
 print('Working...')
 
 # Add inputed integer to previous report
-new_attendance = int(number_list[3]) + input_attendance
-new_first_timers = int(number_list[4]) + input_first_timers
-new_new_converts = int(number_list[5]) + input_new_converts
-new_holy_spirit = int(number_list[6]) + input_holy_spirit
-new_church = int(number_list[7]) + input_church
-new_midweek = int(number_list[8]) + input_midweek
+# if int(number_list[3]) >= 55:
+#     new_attendance = 55
+# elif int(number_list[3]) >
+# new_first_timers = int(number_list[4]) + input_first_timers
+# new_new_converts = int(number_list[5]) + input_new_converts
+# new_holy_spirit = int(number_list[6]) + input_holy_spirit
+# new_church = int(number_list[7]) + input_church
+# new_midweek = int(number_list[8]) + input_midweek
 
 try:
     close_report = driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[3]/div[2]/div[2]/div/div'
@@ -122,40 +124,176 @@ finally:
     add_button.click()
 
     for num in range(4):
+        # --------Prayer and Planning---------
         if num == 0:
             type_of_meeting = driver.find_element(By.NAME, 'CmisCellLeadersReport[type_of_meeting]')
             type_of_meeting.click()
 
             date_of_meeting = driver.find_element(By.NAME, 'CmisCellLeadersReport[date_of_meeting]')
             date_of_meeting.click()
-            date_of_meeting.send_keys('06')
+            date_of_meeting.send_keys('0610')
+
+            if previous_attendance >= 55:
+                new_attendance = previous_attendance + 4
+                new_first_timers = choice([4, 5, 6, 7, 8, 9, 10, 11, 12])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([5, 6, 7, 8, 9])
+                new_church = choice([20, 21, 22, 23, 24, 25])
+            elif 40 < previous_attendance <= 54:
+                num_to_add = choice([4, 5])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([11, 12, 13, 14, 15])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([4, 5, 6, 7])
+                new_church = choice([15, 16, 17, 18, 19, 20])
+            elif 20 < previous_attendance <= 40:
+                num_to_add = choice([6, 7])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([5, 6, 7, 8])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([2, 3, 4, 5])
+                new_church = choice([8, 9, 10, 11, 12, 13])
+            elif previous_attendance <= 20:
+                num_to_add = choice([8, 9])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([3, 4, 5, 6, 7])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([3, 4, 5, 6])
+                new_church = choice([8, 9, 10, 11])
 
             testimony = driver.find_element(By.NAME, 'CmisCellLeadersReport[testimony]')
-            testimony.send_keys('We prayed and planned for the growth of the cell')
+            testimony.send_keys('We prayed and planned for the growth of the cell.')
+
+        # --------Bible Study 1------------------
         elif num == 1:
             type_of_meeting = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[1]/td[2]/div/div'
                                                             '[2]/label/input')
             type_of_meeting.click()
             date_of_meeting = driver.find_element(By.ID, 'CmisCellLeadersReport_date_of_meeting')
-            date_of_meeting.send_keys('13')
+            date_of_meeting.send_keys('1310')
+
+            if previous_attendance >= 55:
+                new_attendance = previous_attendance + 17
+                new_first_timers = choice([4, 5, 6, 7, 8, 9, 10, 11, 12])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([6, 7, 8, 9, 10])
+                new_church = choice([22, 23, 24, 25, 26, 27])
+            elif 40 < previous_attendance <= 54:
+                num_to_add = choice([8, 9])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([13, 14, 15, 16, 17])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([9, 10, 11, 12, 13])
+                new_church = choice([27, 28, 29, 30, 31, 32])
+            elif 20 < previous_attendance <= 40:
+                num_to_add = choice([4, 5])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([2, 3, 4, 5])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([2, 3, 4, 5])
+                new_church = choice([6, 7, 8, 9, 10])
+            elif previous_attendance <= 20:
+                num_to_add = choice([2, 3])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([2, 3, 4, 5])
+                new_new_converts = choice([new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([2, 3, 4, 5])
+                new_church = choice([6, 7, 8, 9])
 
             testimony = driver.find_element(By.NAME, 'CmisCellLeadersReport[testimony]')
             testimony.send_keys(choice(testimony_list))
+
+        # --------Bible Study 2------------------
         elif num == 2:
             type_of_meeting = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[1]/td[2]/div/div'
                                                             '[3]/label')
             type_of_meeting.click()
             date_of_meeting = driver.find_element(By.ID, 'CmisCellLeadersReport_date_of_meeting')
-            date_of_meeting.send_keys('20')
+            date_of_meeting.send_keys('2010')
+
+            if previous_attendance >= 55:
+                new_attendance = previous_attendance + 18
+                new_first_timers = choice([5, 6, 7, 8, 9, 10, 11, 12])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([6, 7, 8, 9, 10])
+                new_church = choice([22, 23, 24, 25, 26, 27])
+            elif 40 < previous_attendance <= 54:
+                num_to_add = choice([7, 8])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([13, 14, 15, 16, 17])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([9, 10, 11, 12, 13])
+                new_church = choice([27, 28, 29, 30, 31, 32])
+            elif 20 < previous_attendance <= 40:
+                num_to_add = choice([4, 5])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([2, 3, 4, 5])
+                new_new_converts = choice([0, new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([2, 3, 4, 5])
+                new_church = choice([6, 7, 8, 9, 10])
+            elif previous_attendance <= 20:
+                num_to_add = choice([1, 2, 3])
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice([2, 3, 4, 5])
+                new_new_converts = choice([new_first_timers - 2])
+                new_holy_spirit = new_new_converts
+                new_midweek = choice([2, 3, 4, 5])
+                new_church = choice([6, 7, 8, 9])
 
             testimony = driver.find_element(By.NAME, 'CmisCellLeadersReport[testimony]')
             testimony.send_keys(choice(testimony_list))
+
+        # --------Cell Outreach------------------
         elif num == 3:
             type_of_meeting = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[1]/td[2]/div/div'
                                                             '[4]/label')
             type_of_meeting.click()
             date_of_meeting = driver.find_element(By.ID, 'CmisCellLeadersReport_date_of_meeting')
-            date_of_meeting.send_keys('27')
+            date_of_meeting.send_keys('2710')
+
+            if previous_attendance >= 55:
+                new_attendance = previous_attendance + 76
+                numbers = list(range(80, 121))
+                new_first_timers = choice(numbers)
+                new_new_converts = new_first_timers - 22
+                new_holy_spirit = new_new_converts
+                new_midweek = choice(list(range(6, 13)))
+                new_church = choice(list(range(40, 61)))
+            elif 40 < previous_attendance <= 54:
+                num_to_add = choice(list(range(36, 38)))
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice(list(range(27, 38)))
+                new_new_converts = new_first_timers - 11
+                new_holy_spirit = new_new_converts
+                new_midweek = choice(list(range(11, 18)))
+                new_church = choice(list(range(33, 49)))
+            elif 20 < previous_attendance <= 40:
+                num_to_add = choice(list(range(20, 34)))
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice(list(range(10, 18)))
+                new_new_converts = new_first_timers - 3
+                new_holy_spirit = new_new_converts
+                new_midweek = choice(list(range(7, 16)))
+                new_church = choice(list(range(20, 27)))
+            elif previous_attendance <= 20:
+                num_to_add = choice(list(range(15, 17)))
+                new_attendance = previous_attendance + num_to_add
+                new_first_timers = choice(list(range(9, 16)))
+                new_new_converts = new_first_timers - 2
+                new_holy_spirit = new_new_converts
+                new_midweek = choice(list(range(9, 12)))
+                new_church = choice(list(range(16, 24)))
 
             testimony = driver.find_element(By.NAME, 'CmisCellLeadersReport[testimony]')
             testimony.send_keys('It was an amazing outreach. We hosted the Healing Streams Live Healing Service.')
@@ -222,8 +360,9 @@ finally:
         sunday_service.send_keys(Keys.BACK_SPACE)
         sunday_service.send_keys(new_church)
 
-        # submit = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[13]/td[2]/input')
-        # submit.click()
+        submit = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[13]/td[2]/input')
+        submit.click()
+        time.sleep(3)
         print(f'Done for {meeting_type}')
     login_dict.pop(0)
 
