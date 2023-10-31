@@ -62,3 +62,9 @@
 # for n in range(3):
 #     if n == 3:
 #         print('N')
+
+num = input('Number: ')
+norm = 4
+
+algebra = int(num) + norm
+print(algebra)
