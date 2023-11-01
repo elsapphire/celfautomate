@@ -59,9 +59,9 @@
 # testimony_list = ['We had a wonderful meeting', 'We had a glorious time', 'We had an awesome time.']
 # print(choice(testimony_list))
 
-for n in range(4):
-    if n == 3:
-        print('N')
+# for n in range(4):
+#     if n == 3:
+#         print('N')
 # #
 # num = input('Number: ')
 # norm = 4
@@ -76,3 +76,18 @@ for n in range(4):
 #     print('Yes')
 
 # print(random.choice(list(range(36, 38))))
+# import pandas
+#
+# pd = pandas.read_csv('Log Ins new.xlsx - Sheet1.csv')
+# emails = pd.to_dict()['email']
+# passwords = pd.to_dict()['password']
+#
+# login_dict = {}
+# for i in range(len(emails)):
+#     login_dict[i] = {
+#         'email': emails[i],
+#         'password': passwords[i]
+#     }
+
+print(215 / 2)
+

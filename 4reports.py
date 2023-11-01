@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException
 
-pd = pandas.read_csv('CECLF ')
+pd = pandas.read_csv('Log Ins new.xlsx - Sheet1.csv')
 emails = pd.to_dict()['email']
 passwords = pd.to_dict()['password']
 
