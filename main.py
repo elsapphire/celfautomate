@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException
 
-pd = pandas.read_csv('Log ins2 - Sheet1.csv')
+pd = pandas.read_csv('')
 emails = pd.to_dict()['email']
 passwords = pd.to_dict()['password']
 

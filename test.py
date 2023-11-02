@@ -89,5 +89,17 @@
 #         'password': passwords[i]
 #     }
 
-print(215 / 2)
-
+# using proxy ip
+# from selenium import webdriver
+# from webdriver_manager.chrome import ChromeDriverManager
+#
+# proxy_server_url = '198.199.86.11'
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.add_experimental_option('detach', True)
+# chrome_options.add_argument(f'--proxy-server={proxy_server_url}')
+#
+# driver = webdriver.Chrome(
+#     service=ChromeService(ChromeDriverManager().install(),
+#                           options=chrome_options)
+#
+# driver.get('http://httpbin.org/ip')

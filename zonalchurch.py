@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 # from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException
 
-pd = pandas.read_csv('CECLF USER NAMES - Sheet1.csv')
+pd = pandas.read_csv('sheet 1.xlsx - Sheet1.csv')
 emails = pd.to_dict()['email']
 passwords = pd.to_dict()['password']
 
@@ -22,8 +22,10 @@ for i in range(len(emails)):
 testimony_list = ['We had a wonderful meeting', 'We had a glorious time', 'We had an awesome time.',
                   'It was an awesome time studying the word and sharing our thoughts.', 'It was an exciting meeting.']
 
+# proxy_server_url = '198.199.86.11'
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option('detach', True)
+# chrome_options.add_argument(f'--proxy-server={proxy_server_url}')
 
 driver = webdriver.Chrome(options=chrome_options)
 
@@ -60,7 +62,7 @@ for num in range(4):
             type_of_meeting = driver.find_element(By.NAME, 'CmisCellLeadersReport[type_of_meeting]')
             type_of_meeting.click()
 
-        date_of_meeting = driver.find_element(By.NAME, 'CmisCellLeadersReport[date_of_meeting]')
+        date_of_meeting = driver.find_element(By.ID, 'CmisCellLeadersReport_date_of_meeting')
         date_of_meeting.click()
         date_of_meeting.send_keys('0610')
 
@@ -153,7 +155,7 @@ for num in range(4):
         new_attendance = choice(list(range(150, 281)))
         new_first_timers = choice(list(range(120, 251)))
         if new_first_timers > new_attendance:
-            new_attendance = int(new_attendance + (new_first_timers / 2))
+            new_attendance = int((new_attendance + new_first_timers) / 2)
         new_new_converts = new_first_timers - 22
         new_holy_spirit = new_new_converts
         new_midweek = choice(list(range(40, 81)))
@@ -170,25 +172,25 @@ for num in range(4):
         start_time = driver.find_element(By.XPATH, '//*[@id="_easyui_textbox_input1"]')
         start_time.click()
 
-        start_hour = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[2]/div/div[8]')
+        start_hour = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[2]/div/div[8]')
         start_hour.click()
 
-        start_pm = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[1]/div[4]/div[2]')
+        start_pm = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[1]/div[4]/div[2]')
         start_pm.click()
 
-        start_ok = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/table/tbody/tr/td[1]/a')
+        start_ok = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[2]/table/tbody/tr/td[1]/a')
         start_ok.click()
 
         end_time = driver.find_element(By.XPATH, '//*[@id="_easyui_textbox_input2"]')
         end_time.click()
 
-        end_hour = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[1]/div[2]/div/div[9]')
+        end_hour = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[2]/div/div[9]')
         end_hour.click()
 
-        end_pm = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[1]/div[1]/div[4]/div[2]')
+        end_pm = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[1]/div[4]/div[2]')
         end_pm.click()
 
-        end_ok = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[2]/table/tbody/tr/td[1]/a')
+        end_ok = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/table/tbody/tr/td[1]/a')
         end_ok.click()
     except ElementClickInterceptedException:
         # -------------Close Pop Up----------------
@@ -198,25 +200,25 @@ for num in range(4):
         start_time = driver.find_element(By.XPATH, '//*[@id="_easyui_textbox_input1"]')
         start_time.click()
 
-        start_hour = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[2]/div/div[8]')
+        start_hour = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[2]/div/div[8]')
         start_hour.click()
 
-        start_pm = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[1]/div[4]/div[2]')
+        start_pm = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[1]/div[4]/div[2]')
         start_pm.click()
 
-        start_ok = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/table/tbody/tr/td[1]/a')
+        start_ok = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[2]/table/tbody/tr/td[1]/a')
         start_ok.click()
 
         end_time = driver.find_element(By.XPATH, '//*[@id="_easyui_textbox_input2"]')
         end_time.click()
 
-        end_hour = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[1]/div[2]/div/div[9]')
+        end_hour = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[2]/div/div[9]')
         end_hour.click()
 
-        end_pm = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[1]/div[1]/div[4]/div[2]')
+        end_pm = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[1]/div[4]/div[2]')
         end_pm.click()
 
-        end_ok = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[2]/table/tbody/tr/td[1]/a')
+        end_ok = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/table/tbody/tr/td[1]/a')
         end_ok.click()
     # --------------------------------------End time of meeting section---------------------------------------
     try:
@@ -248,9 +250,9 @@ for num in range(4):
     sunday_service.clear()
     sunday_service.send_keys(new_church)
 
-    # submit = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[13]/td[2]/input')
-    # submit.click()
-    # time.sleep(1)
+    submit = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[13]/td[2]/input')
+    submit.click()
+    time.sleep(1)
     print(f'Done for {meeting_type}')
 print(f'Done for {login_dict[0]["email"]}')
 login_dict.pop(0)
@@ -291,7 +293,7 @@ for n in range(len(login_dict)):
                 type_of_meeting = driver.find_element(By.NAME, 'CmisCellLeadersReport[type_of_meeting]')
                 type_of_meeting.click()
 
-            date_of_meeting = driver.find_element(By.NAME, 'CmisCellLeadersReport[date_of_meeting]')
+            date_of_meeting = driver.find_element(By.ID, 'CmisCellLeadersReport_date_of_meeting')
             date_of_meeting.click()
             date_of_meeting.send_keys('0610')
 
@@ -305,6 +307,8 @@ for n in range(len(login_dict)):
             testimony = driver.find_element(By.NAME, 'CmisCellLeadersReport[testimony]')
             testimony.clear()
             testimony.send_keys('We prayed and planned for the growth of the cell.')
+
+            meeting_type = 'Prayer and Planning'
 
         # --------Bible Study 1------------------
         elif num == 1:
@@ -335,6 +339,8 @@ for n in range(len(login_dict)):
             testimony.clear()
             testimony.send_keys(choice(testimony_list))
 
+            meeting_type = 'Bible Study 1'
+
         # --------Bible Study 2------------------
         elif num == 2:
             try:
@@ -364,6 +370,8 @@ for n in range(len(login_dict)):
             testimony.clear()
             testimony.send_keys(choice(testimony_list))
 
+            meeting_type = 'Bible Study 2'
+
         # --------Cell Outreach------------------
         elif num == 3:
             try:
@@ -384,7 +392,7 @@ for n in range(len(login_dict)):
             new_attendance = choice(list(range(150, 281)))
             new_first_timers = choice(list(range(120, 251)))
             if new_first_timers > new_attendance:
-                new_attendance = int(new_attendance + (new_first_timers / 2))
+                new_attendance = int((new_attendance + new_first_timers) / 2)
             new_new_converts = new_first_timers - 22
             new_holy_spirit = new_new_converts
             new_midweek = choice(list(range(40, 81)))
@@ -394,32 +402,32 @@ for n in range(len(login_dict)):
             testimony.click()
             testimony.clear()
             testimony.send_keys('It was an amazing outreach. We hosted the Healing Streams Live Healing Service.')
-        meeting_type = type_of_meeting.text
+            meeting_type = 'Cell Outreach'
 
         # ---------------------------------------Time of meeting--------------------------------------------------
         try:
             start_time = driver.find_element(By.XPATH, '//*[@id="_easyui_textbox_input1"]')
             start_time.click()
 
-            start_hour = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[2]/div/div[8]')
+            start_hour = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[2]/div/div[8]')
             start_hour.click()
 
-            start_pm = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[1]/div[4]/div[2]')
+            start_pm = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[1]/div[4]/div[2]')
             start_pm.click()
 
-            start_ok = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/table/tbody/tr/td[1]/a')
+            start_ok = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[2]/table/tbody/tr/td[1]/a')
             start_ok.click()
 
             end_time = driver.find_element(By.XPATH, '//*[@id="_easyui_textbox_input2"]')
             end_time.click()
 
-            end_hour = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[1]/div[2]/div/div[9]')
+            end_hour = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[2]/div/div[9]')
             end_hour.click()
 
-            end_pm = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[1]/div[1]/div[4]/div[2]')
+            end_pm = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[1]/div[4]/div[2]')
             end_pm.click()
 
-            end_ok = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[2]/table/tbody/tr/td[1]/a')
+            end_ok = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/table/tbody/tr/td[1]/a')
             end_ok.click()
         except ElementClickInterceptedException:
             # -------------Close Pop Up----------------
@@ -429,25 +437,25 @@ for n in range(len(login_dict)):
             start_time = driver.find_element(By.XPATH, '//*[@id="_easyui_textbox_input1"]')
             start_time.click()
 
-            start_hour = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[2]/div/div[8]')
+            start_hour = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[2]/div/div[8]')
             start_hour.click()
 
-            start_pm = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[1]/div[4]/div[2]')
+            start_pm = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/div[1]/div[4]/div[2]')
             start_pm.click()
 
-            start_ok = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/table/tbody/tr/td[1]/a')
+            start_ok = driver.find_element(By.XPATH, '/html/body/div[2]/div/div[2]/table/tbody/tr/td[1]/a')
             start_ok.click()
 
             end_time = driver.find_element(By.XPATH, '//*[@id="_easyui_textbox_input2"]')
             end_time.click()
 
-            end_hour = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[1]/div[2]/div/div[9]')
+            end_hour = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[2]/div/div[9]')
             end_hour.click()
 
-            end_pm = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[1]/div[1]/div[4]/div[2]')
+            end_pm = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[1]/div[1]/div[4]/div[2]')
             end_pm.click()
 
-            end_ok = driver.find_element(By.XPATH, '/html/body/div[4]/div/div[2]/table/tbody/tr/td[1]/a')
+            end_ok = driver.find_element(By.XPATH, '/html/body/div[3]/div/div[2]/table/tbody/tr/td[1]/a')
             end_ok.click()
         # --------------------------------------End time of meeting section---------------------------------------
         try:
@@ -479,10 +487,10 @@ for n in range(len(login_dict)):
         sunday_service.clear()
         sunday_service.send_keys(new_church)
 
-        # submit = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[13]/td[2]/input')
-        # submit.click()
-        # time.sleep(1)
+        submit = driver.find_element(By.XPATH, '//*[@id="fixed-table2"]/tbody/tr[13]/td[2]/input')
+        submit.click()
+        time.sleep(1)
         print(f'Done for {meeting_type}')
 
-    print(f'Done for {login_dict[n + 1]["email"]}. Moving on to next Log In...')
+    print(f'Done for {login_dict[n + 1]["email"]}. Number {n + 1}/{len(login_dict)}. \nLogging Out...')
 driver.quit()
