@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 # from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException
 
-pd = pandas.read_csv('sheet 1.xlsx - Sheet1.csv')
+pd = pandas.read_csv('More Logs - Sheet1.csv')
 emails = pd.to_dict()['email']
 passwords = pd.to_dict()['password']
 
@@ -155,7 +155,7 @@ for num in range(4):
         new_attendance = choice(list(range(150, 281)))
         new_first_timers = choice(list(range(120, 251)))
         if new_first_timers > new_attendance:
-            new_attendance = int((new_attendance + new_first_timers) / 2)
+            new_first_timers = int(new_first_timers / 2)
         new_new_converts = new_first_timers - 22
         new_holy_spirit = new_new_converts
         new_midweek = choice(list(range(40, 81)))
@@ -493,4 +493,5 @@ for n in range(len(login_dict)):
         print(f'Done for {meeting_type}')
 
     print(f'Done for {login_dict[n + 1]["email"]}. Number {n + 1}/{len(login_dict)}. \nLogging Out...')
+print(f'Completed. Submitted reports for {len(login_dict) + 1} accounts')
 driver.quit()
